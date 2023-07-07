@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Item {
+    private int itemId;
+    private String shortDescription;
+    private double price;
+    private String brand;
+
+    public Item(int itemId, String shortDescription, double price, String brand) {
+        this.itemId = itemId;
+        this.shortDescription = shortDescription;
+        this.price = price;
+        this.brand = brand;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+}
+
+
+public class ItemCollection {
+    public static void main(String[] args) {
+        // Create a collection of items
+        List<Item> items = new ArrayList<>();
+        items.add(new Item(1, "Short description 1", 9.99, "Toshiba"));
+        items.add(new Item(2, "Short description 2", 19.99, "Sony"));
+        items.add(new Item(3, "Short description 3", 14.99, "TCL"));
+        items.add(new Item(4, "Short description 4", 29.99, "Samsung"));
+        items.add(new Item(5, "Short description 5", 24.99, "Toshiba"));
+
+        //  Filter items by  "T"
+        List<Item> filteredItems = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getBrand().startsWith("T")) {
+                filteredItems.add(item);
+            }
+        }
+
+        //  Sort items by descending order
+        Collections.sort(filteredItems, Comparator.comparingDouble(Item::getPrice).reversed());
+
+        //  Print the sorted items
+        for (Item item : filteredItems) {
+            System.out.println("Item ID: " + item.getItemId());
+            System.out.println("Short Description: " + item.getShortDescription());
+            System.out.println("Price: " + item.getPrice());
+            System.out.println("Brand: " + item.getBrand());
+            System.out.println();
+        }
+    }
+}
