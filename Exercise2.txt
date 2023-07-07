@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+
+public class FavoriteBook {
+public ArrayList<String> favoriteBooks=new ArrayList<String>();
+
+public void addFavoriteBook(String bookName) {
+if(!bookName.contains("Great")){
+favoriteBooks.add(bookName);
+}
+}
+public void printFavoriteBooks() {
+System.out.println("Favorite Books: "+favoriteBooks.size());
+for(String book:favoriteBooks) {
+System.out.println(book);
+}
+}
+public static void main(String[] args) {
+FavoriteBook fav=new FavoriteBook();
+fav.addFavoriteBook("Shoe Dog");
+fav.addFavoriteBook("The Great Ninja War");
+fav.addFavoriteBook("The Naruto");
+fav.addFavoriteBook("The Nine Tail Fox");
+
+fav.printFavoriteBooks();
+
+}
+
+}
